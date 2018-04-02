@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Stack
@@ -16,7 +15,7 @@ namespace Stack
             _list = new T[INITIAL_LENGTH];
         }
 
-        public int CurrentIndex { get { return _index; } }
+        public int Count { get { return _index; } }
 
         public void Push(T item) 
         {
