@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace StringExtensions
 {
@@ -49,6 +50,28 @@ namespace StringExtensions
                 }
             }
             return new string(newString);
+        }
+
+        public static string Compress(this string input) 
+        {
+            var inputArray = input.ToCharArray();
+            StringBuilder sb = new StringBuilder();
+            char currentChar = inputArray[0];
+            int charCount = 1;
+            for(int i = 1; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] == currentChar) charCount++;
+                else {
+                    sb.Append(currentChar);
+                    sb.Append(charCount);
+                    currentChar = inputArray[i];
+                    charCount = 1;
+                }
+            }
+            sb.Append(currentChar);
+            sb.Append(charCount);
+            var formattedString = sb.ToString();
+            return formattedString.Length < input.Length ? formattedString : input;
         }
     }
 }

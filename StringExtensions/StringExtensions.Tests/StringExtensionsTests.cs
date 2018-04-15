@@ -46,8 +46,31 @@ namespace StringExtensions.Tests
         {
             var input = "1 3  6  9";
             var output = input.ReplaceSpace20();
-            Console.WriteLine(output);
             Assert.AreEqual("1%203%20%206%20%209",  output);
+        }
+
+        [TestMethod]
+        public void StringIsCompressed()
+        {
+            var input = "aabcccccaaa";
+            var output = input.Compress();
+            Assert.AreEqual("a2b1c5a3",  output);
+        }
+
+        [TestMethod]
+        public void StringIsCompressed2()
+        {
+            var input = "aabcccccaaab";
+            var output = input.Compress();
+            Assert.AreEqual("a2b1c5a3b1",  output);
+        }
+
+        [TestMethod]
+        public void CanNotCompressString()
+        {
+            var input = "abcabcabcabc";
+            var output = input.Compress();
+            Assert.AreEqual("abcabcabcabc",  output);
         }
     }
 }
