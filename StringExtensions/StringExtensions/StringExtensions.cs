@@ -32,13 +32,23 @@ namespace StringExtensions
         public static string ReplaceSpace20(this string input) 
         {
             var chars = input.ToCharArray();
-            var index = chars.Length - 1;
-            if (chars[index] != ' ') return input; // nothing to replace
-            for (; index >= 0; index--) 
+            int spaceCount = 0;
+            for(int i = 0; i < chars.Length; i++) 
             {
-                
+                if (chars[i] == ' ') spaceCount++;
             }
-            return new string(chars);
+            int newLength = chars.Length + spaceCount * 2;
+            var newString = new char[newLength];
+            for(int i = 0, j = 0; i < chars.Length; i++) 
+            {
+                if (chars[i] != ' ') newString[j++] = chars[i];
+                else {
+                    newString[j++] = '%';
+                    newString[j++] = '2';
+                    newString[j++] = '0';
+                }
+            }
+            return new string(newString);
         }
     }
 }

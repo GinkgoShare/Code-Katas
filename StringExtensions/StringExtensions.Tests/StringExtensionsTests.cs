@@ -1,3 +1,4 @@
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringExtensions.Tests
@@ -43,8 +44,10 @@ namespace StringExtensions.Tests
         [TestMethod]
         public void AreSpacesReplacedWithPercent20()
         {
-            var input = "1 3  6  9               ";
-            Assert.AreEqual("1%203%20%206%20%209", input.ReplaceSpace20());
+            var input = "1 3  6  9";
+            var output = input.ReplaceSpace20();
+            Console.WriteLine(output);
+            Assert.AreEqual("1%203%20%206%20%209",  output);
         }
     }
 }
