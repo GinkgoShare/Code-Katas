@@ -54,6 +54,7 @@ namespace StringExtensions
 
         public static string Compress(this string input) 
         {
+            if (input.Length <= input.CountCompression()) return input;
             var inputArray = input.ToCharArray();
             StringBuilder sb = new StringBuilder();
             char currentChar = inputArray[0];
@@ -70,8 +71,27 @@ namespace StringExtensions
             }
             sb.Append(currentChar);
             sb.Append(charCount);
-            var formattedString = sb.ToString();
-            return formattedString.Length < input.Length ? formattedString : input;
+            return sb.ToString();
+        }
+
+        public static int CountCompression(this string input) 
+        {
+            if (string.IsNullOrEmpty(input)) return 0;
+            var inputArray = input.ToCharArray();
+            int count = 0;
+            char currentChar = inputArray[0];
+            int charCount = 1;
+            for(int i = 1; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] == currentChar) charCount++;
+                else {
+                    currentChar = inputArray[i];
+                    charCount = 1;
+                    count += 2;
+                }
+            }
+            count += 2;
+            return count;
         }
     }
 }

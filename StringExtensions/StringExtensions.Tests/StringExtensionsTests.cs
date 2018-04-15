@@ -72,5 +72,20 @@ namespace StringExtensions.Tests
             var output = input.Compress();
             Assert.AreEqual("abcabcabcabc",  output);
         }
+
+        [TestMethod]
+        public void CountOfCompressionIsFour()
+        {
+            var input = "ab";
+            var output = input.CountCompression();
+            Assert.AreEqual(4,  output);
+        }
+
+        public void CountOfCompressionIsFive()
+        {
+            var input = "aaaabcd";
+            var output = input.CountCompression();
+            Assert.AreEqual(4,  output);
+        }
     }
 }
